@@ -103,5 +103,3 @@ func NewDefaultCensor(config *CensorConfig) *Censor {
 
 	return censor
 }
-
-var DefaultCensor = NewDefaultCensor(nil)

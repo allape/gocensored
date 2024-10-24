@@ -21,7 +21,11 @@ func TestCensored(t *testing.T) {
 		t.Fatalf("Name should be hello, but got %s", c.Name)
 	}
 
-	err := DefaultCensor.Encencor(&c)
+	censor := NewDefaultCensor(&CensorConfig{
+		Password: []byte("password"),
+	})
+
+	err := censor.Encencor(&c)
 	if err != nil {
 		t.Fatalf("Encode failed: %v", err)
 	}
@@ -32,7 +36,7 @@ func TestCensored(t *testing.T) {
 		t.Fatalf("Desc should be ed570fcde413167e5faf137052894005, but got %s", c.Desc)
 	}
 
-	err = DefaultCensor.Decensor(&c)
+	err = censor.Decensor(&c)
 	if err != nil {
 		t.Fatalf("Decode failed: %v", err)
 	}
