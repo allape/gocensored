@@ -7,8 +7,9 @@ import (
 )
 
 type MyCensored struct {
-	Name string `censored:"hex"`
-	Desc string `censored:"mysql-aes"`
+	Name  string `censored:"hex"`
+	Desc  string `censored:"mysql-aes"`
+	Plain string
 }
 
 func TestCensored(t *testing.T) {

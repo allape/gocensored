@@ -47,6 +47,10 @@ func (r *Censor) RegisterCodec(name string, codec Codec, enforced bool) error {
 func (r *Censor) Encencor(record any) error {
 	return WalkThroughStringFields(record, func(field reflect.Value, fieldType reflect.StructField) error {
 		tag := fieldType.Tag.Get(r.Config.TagName)
+		if tag == "" {
+			return nil
+		}
+
 		codec, ok := r.codecs[tag]
 		if !ok {
 			return fmt.Errorf("censor %s not found", tag)
@@ -65,6 +69,10 @@ func (r *Censor) Encencor(record any) error {
 func (r *Censor) Decensor(record any) error {
 	return WalkThroughStringFields(record, func(field reflect.Value, fieldType reflect.StructField) error {
 		tag := fieldType.Tag.Get(r.Config.TagName)
+		if tag == "" {
+			return nil
+		}
+
 		codec, ok := r.codecs[tag]
 		if !ok {
 			return fmt.Errorf("censor %s not found", tag)
