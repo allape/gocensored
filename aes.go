@@ -22,7 +22,7 @@ type SaltyAESCensor struct {
 }
 
 func (c *SaltyAESCensor) Encode(value, password []byte) ([]byte, error) {
-	return gosalty.Decode(value, password)
+	return gosalty.Encode(value, password)
 }
 
 func (c *SaltyAESCensor) Decode(value, password []byte) ([]byte, error) {

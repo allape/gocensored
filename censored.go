@@ -30,16 +30,24 @@ func (t TagContent) Get() (CodecName, TransformerName, error) {
 		return "", "", nil
 	}
 
+	var codec, transformer string
+
 	seg := strings.Split(string(t), ".")
-	if len(seg) != 2 {
+
+	if len(seg) == 1 {
+		codec = seg[0]
+	} else if len(seg) == 2 {
+		codec = seg[0]
+		transformer = seg[1]
+	} else {
 		return "", "", fmt.Errorf("invalid tag content")
 	}
 
-	if seg[1] == "" {
-		seg[1] = "hex"
+	if transformer == "" {
+		transformer = "hex"
 	}
 
-	return CodecName(seg[0]), TransformerName(seg[1]), nil
+	return CodecName(codec), TransformerName(transformer), nil
 }
 
 const DefaultTagName = "censored"
