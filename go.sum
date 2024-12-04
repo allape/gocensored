@@ -1,2 +1,4 @@
-github.com/allape/Go-MySQL-AES v0.0.0-20241019081150-0c4c8374e7ad h1:IF3PPAumWOEisob+bL9w7PtKm9vLcj3VFUdppJ48XDM=
-github.com/allape/Go-MySQL-AES v0.0.0-20241019081150-0c4c8374e7ad/go.mod h1:bVXv4YKbccccRNa/8GZZxwXvM4SYvwKmx9mEExwpJaU=
+github.com/allape/gomysqlaes v0.0.0-20241202054245-51a6dcfcbd79 h1:v/lcX4MWuhH0RnuTdhcbmjXvxBonGpTbUjsU1qj1tAA=
+github.com/allape/gomysqlaes v0.0.0-20241202054245-51a6dcfcbd79/go.mod h1:+FFRMP5PEr5SyJOooNLfCjCiUycIWbKWG/m7RqQ2uFk=
+github.com/allape/gosalty v0.0.0-20241204072201-5664235f50dc h1:OUjdqRxgSU7HKEFcKzp9MxQ7qKGQyfEgM9e4RBo25fc=
+github.com/allape/gosalty v0.0.0-20241204072201-5664235f50dc/go.mod h1:fIWaPHKxURgID+zYI56AD6Sn/oJyMJBizkDhO3n4mRg=

@@ -9,26 +9,31 @@ Also see [censored_test.go](censored_test.go).
 ```go
 package main
 
-import censored "github.com/allape/gocensored"
+import "github.com/allape/gocensored"
 
 type CompanyData struct {
-	Info1       string `censored:"mysql-aes"`
-	Info2       string `censored:"mysql-aes"`
-	PublicInfo1 string `censored:"hex"`
+	Info1       string `censored:"aes.hex"`
+	Info2       string `censored:"aes.base64"`
+	Info3       string `censored:"saltyaes.urlbase64"`
+	PublicInfo1 string `censored:".hex"`
 }
 
 func main() {
 	info := CompanyData{
 		Info1:       "secret1",
 		Info2:       "secret2",
+		Info3:       "secret3",
 		PublicInfo1: "public1",
 	}
 
-	censor := censored.NewDefaultCensor(&censored.CensorConfig{
+	censor, err := censored.NewDefaultCensor(&gocensored.Config{
 		Password: []byte("1234_6789"),
 	})
+	if err != nil {
+        panic(err)
+    }
 
-	err := censor.Encencor(&info)
+	err = censor.Encencor(&info)
 	if err != nil {
 		panic(err)
 	}

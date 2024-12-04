@@ -2,16 +2,14 @@ package censored
 
 import "encoding/hex"
 
-// HexCensor is a super weak censor, but searchable in the database.
-type HexCensor struct {
-	Codec
+type HexTransformer struct {
+	Transformer
 }
 
-func (c *HexCensor) Encode(value string, _ []byte) (HexString, error) {
-	return HexString(hex.EncodeToString([]byte(value))), nil
+func (c *HexTransformer) Encode(value []byte) (string, error) {
+	return hex.EncodeToString(value), nil
 }
 
-func (c *HexCensor) Decode(value HexString, _ []byte) (string, error) {
-	s, e := hex.DecodeString(string(value))
-	return string(s), e
+func (c *HexTransformer) Decode(value string) ([]byte, error) {
+	return hex.DecodeString(value)
 }
